@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * The {@code SidePanel} class is responsible for displaying various information
@@ -95,6 +96,8 @@ public class SidePanel extends JPanel  {
 	 * The Tetris instance.
 	 */
 	private Tetris tetris;
+        
+       
 	
 	/**
 	 * Creates a new SidePanel and sets it's display properties.
@@ -124,8 +127,10 @@ public class SidePanel extends JPanel  {
 		/*
 		 * Draw the "Stats" category.
 		 */
+               
 		g.setFont(LARGE_FONT);
 		g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
+                
 		g.setFont(SMALL_FONT);
                 g.drawString("Level: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Line: " + tetris.getline(), LARGE_INSET, offset += TEXT_STRIDE);

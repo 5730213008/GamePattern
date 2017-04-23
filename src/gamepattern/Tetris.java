@@ -12,6 +12,7 @@ import static java.time.Clock.system;
 import java.util.Random;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +20,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Tetris extends JFrame implements gametemplate {
 
+    private String NAME;
     private static final long serialVersionUID = -4722429764792514382L;
 
     private static final long FRAME_TIME = 1000L / 50L;
@@ -207,6 +209,7 @@ public class Tetris extends JFrame implements gametemplate {
         /*
 		 * Initialize our random number generator, logic timer, and new game variables.
          */
+      
         this.random = new Random();
         this.isNewGame = true;
         this.gameSpeed = 1.0f;
@@ -289,7 +292,8 @@ public class Tetris extends JFrame implements gametemplate {
 			 * Update the difficulty level. This has no effect on the game, and is only
 			 * used in the "Level" string in the SidePanel.
              */
-            level = (int) (gameSpeed * 1.70f);
+           getLevel();
+            //level = (int) (gameSpeed * 1.70f);
 
             /*
 			 * Spawn a new piece to control.
@@ -430,6 +434,14 @@ public class Tetris extends JFrame implements gametemplate {
 
     @Override
     public int getLevel() {
+        if(line==2){level=2;}
+        else if(line==4) {
+            level=3;
+            gameSpeed +=1.5f;}
+            else if(line==8) {
+            level=4;
+            gameSpeed +=2f;
+        }
         return level;
     }
 
@@ -443,7 +455,6 @@ public class Tetris extends JFrame implements gametemplate {
         side.repaint();
     }
 
-    
     @Override
     public int getline() {
         /*
@@ -469,4 +480,6 @@ public class Tetris extends JFrame implements gametemplate {
         }
         return line;
     }
+    
+    
 }
