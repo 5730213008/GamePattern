@@ -41,4 +41,5 @@ public interface gametemplate {
 
     public int getScore();
 
+    public int getline();
 }

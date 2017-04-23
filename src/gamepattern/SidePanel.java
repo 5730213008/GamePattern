@@ -127,7 +127,8 @@ public class SidePanel extends JPanel  {
 		g.setFont(LARGE_FONT);
 		g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
 		g.setFont(SMALL_FONT);
-		g.drawString("Level: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
+                g.drawString("Level: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Line: " + tetris.getline(), LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 		
 		/*

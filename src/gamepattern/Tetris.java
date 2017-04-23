@@ -269,32 +269,7 @@ public class Tetris extends JFrame implements gametemplate {
 			 * we need to add the piece to the board.
              */
             board.addPiece(currentType, currentCol, currentRow, currentRotation);
-
-            /*
-			 * Check to see if adding the new piece resulted in any cleared lines. If so,
-			 * increase the player's score. (Up to 4 lines can be cleared in a single go;
-			 * [1 = 100pts, 2 = 200pts, 3 = 400pts, 4 = 800pts]).
-             */
-            int cleared = board.checkLines();
-
-            if (cleared > 0 && cleared == 1) {
-                line += 1;
-                score += 100 << cleared;
-                //System.out.println("line:" + line);
-            }
-            else if(cleared > 0 && cleared == 2){ 
-                line += 2;
-                score += 100 << cleared;
-            }
-            else if(cleared > 0 && cleared == 3){
-                line += 2;
-                score += 100 << cleared;
-            }
-            else if(cleared > 0 && cleared == 4){
-                line += 2;
-                score += 100 << cleared;
-            }
-
+            getline();
             /*
 			 * Increase the speed slightly for the next piece and update the game's timer
 			 * to reflect the increase.
@@ -315,7 +290,7 @@ public class Tetris extends JFrame implements gametemplate {
 			 * used in the "Level" string in the SidePanel.
              */
             level = (int) (gameSpeed * 1.70f);
-           
+
             /*
 			 * Spawn a new piece to control.
              */
@@ -327,7 +302,7 @@ public class Tetris extends JFrame implements gametemplate {
     public void resetGame() {
         this.level = 1;
         this.score = 0;
-        this.line=0;
+        this.line = 0;
         this.gameSpeed = 1.0f;
         this.nextType = TileType.values()[random.nextInt(TYPE_COUNT)];
         this.isNewGame = false;
@@ -468,4 +443,30 @@ public class Tetris extends JFrame implements gametemplate {
         side.repaint();
     }
 
+    
+    @Override
+    public int getline() {
+        /*
+			 * Check to see if adding the new piece resulted in any cleared lines. If so,
+			 * increase the player's score. (Up to 4 lines can be cleared in a single go;
+			 * [1 = 100pts, 2 = 200pts, 3 = 400pts, 4 = 800pts]).
+         */
+        int cleared = board.checkLines();
+
+        if (cleared > 0 && cleared == 1) {
+            line += 1;
+            score += 100 << cleared;
+            //System.out.println("line:" + line);
+        } else if (cleared > 0 && cleared == 2) {
+            line += 2;
+            score += 100 << cleared;
+        } else if (cleared > 0 && cleared == 3) {
+            line += 2;
+            score += 100 << cleared;
+        } else if (cleared > 0 && cleared == 4) {
+            line += 2;
+            score += 100 << cleared;
+        }
+        return line;
+    }
 }
